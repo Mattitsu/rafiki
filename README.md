@@ -1,7 +1,8 @@
 <h1 align="center">
-   Discord.js v14 Command-Handlers
+Rafiki Discord Bot - Created by Mattitsu
+  
 </h1>
-<h4 align="center">Commands, Events, Permissions and Cooldown Handlers for Discord.js v14 bot ~ Made by Nathaniel</h4>
+<h4 align="center"> Discord.js v14 Command-Handlers - Commands, Events, Permissions and Cooldown Handlers for Discord.js v14 bot ~ Made by Nathaniel</h4>
 
 <p align="center">
 <a href="https://nodejs.org/en/download/">
