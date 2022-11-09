@@ -134,3 +134,4 @@ dist
 config.json
 credentials.json
 keys.json
+.env
