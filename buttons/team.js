@@ -1,4 +1,4 @@
-const { verifyRole } = require('../config.json');
+
 const { EmbedBuilder, ApplicationCommandOptionType, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
 
 const Team = require('../models/team');

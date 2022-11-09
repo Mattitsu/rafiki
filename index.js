@@ -5,32 +5,7 @@ require('dotenv').config() // remove this line if you are using replit
 
 // const keyFile = require("./credentials.json")
 
-// GOOGLE SHEETS STUFF
-const { google } = require('googleapis');
-const keys = require('./keys.json');
 
-const auth = new google.auth.JWT(
-		keys.client_email, 
-		null, 
-		keys.private_key, 
-		['https://www.googleapis.com/auth/spreadsheets']
-);
-
-auth.authorize(function(err, tokens){
-	if(err){
-		console.log(err);
-		return;
-	} else {
-		console.log("Connected")
-		
-	}
-});
-
-const gsapi = google.sheets({version: "v4", auth: auth });
-
-
-
-// SHEETS STUFF ENDS
 
 const client = new Client({
 	intents: [
@@ -44,13 +19,12 @@ const client = new Client({
 	partials: [Partials.Channel, Partials.Message, Partials.User, Partials.GuildMember, Partials.Reaction] 
 });
 
-client.auth = auth
-client.sheets = gsapi.spreadsheets
+
 client.commands = new Collection()
 client.aliases = new Collection()
 client.slashCommands = new Collection();
 client.buttons = new Collection();
-client.prefix = config.prefix;
+client.prefix = process.env.prefix;
 
 module.exports = client;
 
