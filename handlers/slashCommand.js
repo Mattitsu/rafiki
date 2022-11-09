@@ -14,7 +14,18 @@ const CLIENT_ID = process.env.CLIENT_ID;
 const rest = new REST({ version: '9' }).setToken(TOKEN);
 
 module.exports = (client) => {
+
+	// DELETE SLASH COMMANDS
+
+	// rest.put(Routes.applicationCommands(CLIENT_ID), { body: [] })
+	// .then(() => console.log('Successfully deleted all application commands.'))
+	// .catch(console.error);
+
+
+
 	const slashCommands = []; 
+
+
 
 	fs.readdirSync('./slashCommands/').forEach(async dir => {
 		const files = fs.readdirSync(`./slashCommands/${dir}/`).filter(file => file.endsWith('.js'));
