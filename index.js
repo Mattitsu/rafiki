@@ -1,6 +1,5 @@
 const { Client, GatewayIntentBits, Partials, Collection } = require('discord.js');
 const fs = require('fs');
-const config = require('./config.json');
 require('dotenv').config() // remove this line if you are using replit
 
 
