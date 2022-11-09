@@ -131,7 +131,6 @@ dist
 
 # Config Files
 
-config.json
 credentials.json
 keys.json
 .env

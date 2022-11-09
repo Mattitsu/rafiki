@@ -24,7 +24,7 @@ client.commands = new Collection()
 client.aliases = new Collection()
 client.slashCommands = new Collection();
 client.buttons = new Collection();
-client.prefix = config.prefix;
+client.prefix = process.env.prefix;
 
 module.exports = client;
 
