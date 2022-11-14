@@ -13,7 +13,8 @@ const CreateMember = new mongoose.Schema({
     facebook: String,
     instagram: String,
     twitter: String,
-    team_tag: Array,
+    team_manager: Array,
+    ll_stats:Array,
 });
 
 module.exports = mongoose.model("Member", CreateMember);

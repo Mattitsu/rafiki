@@ -9,6 +9,8 @@ module.exports = {
 	permissions: [],
 	run: async (client, interaction) => {
 
+		console.log(interaction)
+
 		await interaction.deferReply()
 
 		let desc = ``

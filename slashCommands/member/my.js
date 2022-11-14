@@ -7,7 +7,7 @@ const Team = require('../../models/team');
 // const config = require("../../settings/default.js");
 
 module.exports = { 
-    name: "my",
+    name: "player",
     description: "View your profile or another user's profile.",
     options: [
         {
@@ -15,6 +15,7 @@ module.exports = {
             description: 'View your profile',
             type: ApplicationCommandOptionType.Subcommand,
         },
+        
         
         
     ],
@@ -56,10 +57,11 @@ module.exports = {
 
         const embed = new EmbedBuilder()
             .setTitle(`${Taggedmember.username}'s Profile`)
-            .addFields({ name: "Server Roles:", value: `\u200b`})
+            
             .addFields({ name: "Rank:", value: `\`💠\``, inline: true})
             .addFields({ name: "Money:", value: `\`💰 Coins\``, inline: true})
             .addFields({ name: "Team:", value: `${team ? team.teamName : `No Team`}`, inline: true})
+            .addFields({name: `__Livik League Stats__`, value: `Team Name: ${team ? team.teamName : `No Team`}\nGames Played: 0\nTotal Kills: 0`})
             .setThumbnail(`${Taggedmember.avatarURL()}`)
             .setFooter({text: `Rafiki Discord Bot Profile | For more info use /bot-info command`})
 
@@ -67,21 +69,24 @@ module.exports = {
             // Team Info
             // Livik League Stats
 
+        
             
         const Profilebuttons = new ActionRowBuilder().addComponents(
                 new ButtonBuilder()
-                        .setLabel('My Team')
+                        .setLabel('My Teams')
                         .setCustomId('my-team')
-                        .setStyle('Primary'),
+                        .setStyle('Primary')
+                        .setDisabled(true),
 
                     new ButtonBuilder()
                         .setLabel('My Stats')
                         .setCustomId('my-stats')
-                        .setStyle('Primary')      
+                        .setStyle('Primary')
+                        .setDisabled(true)      
             )
 
 
-        return interaction.reply({embeds: [embed], components: [Profilebuttons]})
+        return interaction.reply({embeds: [embed]})
             }
         
     }
