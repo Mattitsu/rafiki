@@ -6,7 +6,7 @@ const CreateMember = new mongoose.Schema({
     username: String,
     ign: String,
     work_multiple: Number,
-    money: Number,
+    money: {type: Number,default: 500},
     bank: Number,
     rank: String,
     reputation: Number,
@@ -14,6 +14,7 @@ const CreateMember = new mongoose.Schema({
     instagram: String,
     twitter: String,
     team_tag: Array,
+    info: String,
 });
 
 module.exports = mongoose.model("Member", CreateMember);

@@ -25,7 +25,7 @@ module.exports = {
         if(interaction.options.getSubcommand() === 'profile'){
        
       
-        const Taggedmember = interaction.options.getUser('user') || interaction.user;
+        const Taggedmember = interaction.user;
 
          // Check if member is in database
          // Request permissions to add to Database
@@ -50,40 +50,33 @@ module.exports = {
         } else {
 
         
-        const team = await Team.findOne({team_members: Taggedmember.id}) 
+        const AllMembers = await Member.find()
 
+        const totalMembers = AllMembers.length
+        
+
+        const description = `**User Bio:**\n${dbMember.info ? dbMember.info : " "}`
         // Show user profile embed here
 
         const embed = new EmbedBuilder()
-            .setTitle(`${Taggedmember.username}'s Profile`)
-            .addFields({ name: "Server Roles:", value: `\u200b`})
-            .addFields({ name: "Rank:", value: `\`💠\``, inline: true})
-            .addFields({ name: "Money:", value: `\`💰 Coins\``, inline: true})
-            .addFields({ name: "Team:", value: `${team ? team.teamName : `No Team`}`, inline: true})
-            .setThumbnail(`${Taggedmember.avatarURL()}`)
-            .setFooter({text: `Rafiki Discord Bot Profile | For more info use /bot-info command`})
-
-         // Profile Buttons 
-            // Team Info
-            // Livik League Stats
-
+            .setTitle(`${dbMember.username}'s Profile`)
+            .setDescription(description)
             
-        const Profilebuttons = new ActionRowBuilder().addComponents(
-                new ButtonBuilder()
-                        .setLabel('My Team')
-                        .setCustomId('my-team')
-                        .setStyle('Primary'),
-
-                    new ButtonBuilder()
-                        .setLabel('My Stats')
-                        .setCustomId('my-stats')
-                        .setStyle('Primary')      
-            )
+            .addFields({ name: "Rank:", value: `${dbMember.rank? dbMember.rank : "0"} of ${totalMembers}`, inline: true})
+            .addFields({ name: "Money:", value: `\`${dbMember.money} 🪙\``, inline: true})
+            
+            
+            .addFields({ name: "Clan:", value: `No Clan`, inline: true})
+            .addFields({ name: "Member of...", value: `No Social Club Membership Found`, inline: true})
+            .setThumbnail(`${Taggedmember.avatarURL()}`)
+            .setFooter({text: `Mwenzi Discord Bot Profile | For more info & commands use /help`})
 
 
-        return interaction.reply({embeds: [embed], components: [Profilebuttons]})
-            }
-        
+
+
+            return interaction.reply({ embeds: [embed] })
+        }
+
     }
 
     // TEAM COMMAND
